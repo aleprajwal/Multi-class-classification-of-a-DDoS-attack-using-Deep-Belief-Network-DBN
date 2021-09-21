@@ -6,7 +6,7 @@ import pandas as pd
 
 # load the dataset
 def load_dataset():
-    dataset = loadtxt('TrainData.csv', delimiter=',', skiprows=1)
+    dataset = loadtxt('DummyCSV/TrainData.csv', delimiter=',', skiprows=1)
     # split into input (X) and output (y) variables
     X = dataset[:, 0:8]
     y = dataset[:, 8]
@@ -15,7 +15,7 @@ def load_dataset():
 
 # load DBN pretrained weight
 def load_weight():
-    paths = ['RBM1.csv', 'RBM2.csv', 'RBM3.csv', 'RBM4.csv']
+    paths = ['DummyCSV/RBM1.csv', 'DummyCSV/RBM2.csv', 'DummyCSV/RBM3.csv', 'DummyCSV/RBM4.csv']
     weights = list()
     for path in paths:
         df = pd.read_csv(path)
