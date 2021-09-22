@@ -3,6 +3,7 @@ from keras.models import Sequential
 from keras.layers import Dense
 import pandas as pd
 
+from dbn import train_dbn
 
 # load the dataset
 def load_dataset():
@@ -32,7 +33,9 @@ model.add(Dense(10, activation='sigmoid'))
 model.add(Dense(10, activation='sigmoid'))
 model.add(Dense(1, activation='sigmoid'))
 
-weight = load_weight()
+X, y = load_dataset()
+# weight = load_weight()
+weight = train_dbn(X, X.shape[1])
 
 # setup input and first hidden layer with pretrained weight
 bias = random.rand(25)
@@ -47,7 +50,7 @@ bias = random.rand(1)
 model.layers[3].set_weights([weight[3], bias])
 # print(model.layers[0].get_weights()[0])
 
-X, y = load_dataset()
+# X, y = load_dataset()
 # compile the keras model
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 # fit the keras model on the dataset
