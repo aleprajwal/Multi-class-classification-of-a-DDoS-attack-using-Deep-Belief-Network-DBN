@@ -50,7 +50,6 @@ bias = random.rand(1)
 model.layers[3].set_weights([weight[3], bias])
 # print(model.layers[0].get_weights()[0])
 
-# X, y = load_dataset()
 # compile the keras model
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 # fit the keras model on the dataset
