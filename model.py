@@ -5,6 +5,7 @@ import pandas as pd
 
 from dbn import train_dbn
 
+
 # load the dataset
 def load_dataset():
     dataset = loadtxt('DummyCSV/TrainData.csv', delimiter=',', skiprows=1)
@@ -45,9 +46,9 @@ bias = random.rand(10)
 model.layers[1].set_weights([weight[1], bias])
 # setup second and third hidden layer with pretrained weight
 model.layers[2].set_weights([weight[2], bias])
-bias = random.rand(1)
+# bias = random.rand(1)
 # setup third and output layer with pretrained weight
-model.layers[3].set_weights([weight[3], bias])
+# model.layers[3].set_weights([weight[3], bias])
 # print(model.layers[0].get_weights()[0])
 
 # compile the keras model

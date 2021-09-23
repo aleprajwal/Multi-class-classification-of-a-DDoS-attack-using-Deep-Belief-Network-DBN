@@ -9,9 +9,10 @@ import rbm
 
 def load_dataset():
     dataset = loadtxt('DummyCSV/TrainData.csv', delimiter=',', skiprows=1)
+    # dataset = loadtxt('train_test.csv', delimiter=',', skiprows=1)
     # split into input (X)
     # output (or the class) variables is ignored because the DBN is trained in an unsupervised way
-    X = dataset[:, 0:8]
+    X = dataset[:, 0:60]
     return X
 
 
@@ -25,7 +26,7 @@ def train_dbn(X, visible_layer):
     """
 
     # layer: number of layers eg. [5, 10, 1] represent 2 rbm i.e, 3 layers(total) with 5, 10, and 1 node respectively
-    layer = [visible_layer, 25, 10, 10, 1]
+    layer = [visible_layer, 25, 10, 10]
 
     rbm_1 = rbm.train_rbm(dataset=X, num_visible=layer[0], num_hidden=layer[1])
     # delete first bias column
@@ -45,15 +46,15 @@ def train_dbn(X, visible_layer):
     rbm_3 = np.delete(rbm_3[0], 0, 0)  # delete bias -> first row
     rbm_3 = np.delete(rbm_3, 0, 1)  # delete bias -> first column
 
-    rbm_4 = rbm.train_rbm(dataset=X, num_visible=layer[3], num_hidden=layer[4])
-    rbm_4 = np.delete(rbm_4[0], 0, 0)  # delete bias -> first row
-    rbm_4 = np.delete(rbm_4, 0, 1)  # delete bias -> first column
+    # rbm_4 = rbm.train_rbm(dataset=X, num_visible=layer[3], num_hidden=layer[4])
+    # rbm_4 = np.delete(rbm_4[0], 0, 0)  # delete bias -> first row
+    # rbm_4 = np.delete(rbm_4, 0, 1)  # delete bias -> first column
 
     weights = list()
     weights.append(rbm_1)
     weights.append(rbm_2)
     weights.append(rbm_3)
-    weights.append(rbm_4)
+    # weights.append(rbm_4)
 
     print("\t\t\n\n[INFO] Pre-Training completed\n\n")
 
