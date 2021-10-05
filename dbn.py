@@ -56,6 +56,11 @@ def train_dbn(X, visible_layer):
     weights.append(rbm_3)
     # weights.append(rbm_4)
 
+    # save weight
+    np.savetxt('weight/rbm  _1.csv', rbm_1, delimiter=',', header=None, comments='')
+    np.savetxt('weight/rbm_1.csv', rbm_2, delimiter=',', header=None, comments='')
+    np.savetxt('weight/rbm_1.csv', rbm_3, delimiter=',', header=None, comments='')
+
     print("\t\t\n\n[INFO] Pre-Training completed\n\n")
 
     return weights
